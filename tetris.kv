@@ -1,9 +1,10 @@
 <MainGrid>
     cols: 1
     gameGrid: []
-    sizeTile: 10
+    sizeTile: 30
     clockEvent: None
     on_kv_post: root.setup()
+    on_size: root.changeSize()
     Label:
         text: "Tetris"
         font_size: 30
@@ -14,14 +15,4 @@
         size_hint_y: None
         size_hint: (1, 0.8)
         padding: 10
-    GridLayout:
-        cols: 2
-        size_hint_y: None
-        size_hint: (1, 0.2)
-        padding: 10
-        Button:
-            text: 'Settings'
-            on_press: root.settings()
-        Button:
-            text: "Start"
-            on_press: root.start()
+        id: tetrisCanvas
