@@ -3,6 +3,7 @@
     gameGrid: []
     moveTiles: []
     staticTiles: []
+    score: 0
     sizeTile: 30
     lastMove: ""
     clockEvent: None
@@ -12,7 +13,13 @@
         text: "Tetris"
         font_size: 30
         size_hint_y: None
-        size_hint: (1, 0.2)
+        size_hint: (1, 0.1)
+    Label:
+        id: scoreLabel
+        font_size: 20
+        size_hint_y: None
+        size_hint: (1, 0.1)
+        text: "Score: 0"
     BoxLayout:
         orientation: 'vertical'
         size_hint_y: None

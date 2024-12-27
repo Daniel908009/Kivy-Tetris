@@ -33,15 +33,21 @@ class MainGrid(GridLayout):
             self.moveObject("down")
         elif text == "w":
             self.moveObject("rotate")
+        elif text == "r":
+            self.restart()
+    def restart(self):
+        self.clockEvent.cancel()
+        self.setup()
     def moveObject(self, direction):
-        print(self.moveTiles)
+        #print(self.moveTiles)
         tilesToRemove = []
         tilesToAppend = []
         if direction == "left" and self.lastMove != "left":
             for tile in self.moveTiles:
                 if tile[1] <= 0 or [tile[0], tile[1]-1] in self.staticTiles:
                     return
-            for tile in self.moveTiles:
+            orderedTiles = sorted(self.moveTiles, key=lambda x: x[1])
+            for tile in orderedTiles:
                 self.gameGrid[tile[0]][tile[1]] = 0
                 self.gameGrid[tile[0]][tile[1]-1] = 1
                 tilesToRemove.append([tile[0], tile[1]]) # tiles have to be removed outside of this loop since otherwise it will start skipping tiles
@@ -52,7 +58,8 @@ class MainGrid(GridLayout):
             for tile in self.moveTiles:
                 if tile[1] >= gridWidth-1 or [tile[0], tile[1]+1] in self.staticTiles:
                     return
-            for tile in self.moveTiles:
+            orderedTiles = sorted(self.moveTiles, key=lambda x: x[1], reverse=True)
+            for tile in orderedTiles:
                 self.gameGrid[tile[0]][tile[1]] = 0
                 self.gameGrid[tile[0]][tile[1]+1] = 1
                 tilesToRemove.append([tile[0], tile[1]])
@@ -62,14 +69,36 @@ class MainGrid(GridLayout):
             for tile in self.moveTiles:
                 if tile[0] <= 0 or [tile[0]-1, tile[1]] in self.staticTiles:
                     return
-            for tile in self.moveTiles:
+            orderedTiles = sorted(self.moveTiles, key=lambda x: x[0])
+            for tile in orderedTiles:
                 self.gameGrid[tile[0]][tile[1]] = 0
                 self.gameGrid[tile[0]-1][tile[1]] = 1
                 tilesToRemove.append([tile[0], tile[1]])
                 tilesToAppend.append([tile[0]-1, tile[1]])
             self.lastMove = "down"
         elif direction == "rotate" and self.lastMove != "rotate":
-            pass # I have absolutely no idea how to rotate the objects, so I will leave this empty for now
+            # flipping the tiles, this is complicated, but it should work
+            print("rotating")
+            pieceTiles = self.moveTiles
+            mostLeftTile = None
+            mostTopTile = None
+            MatrixSize = 0
+            # finding the most left and top tiles, this will be the top left corner of the matrix used in the rotating
+            for tile in pieceTiles:
+                if mostLeftTile == None or tile[1] < mostLeftTile[1]:
+                    mostLeftTile = tile
+                if mostTopTile == None or tile[0] > mostTopTile[0]:
+                    mostTopTile = tile
+            # finding the size of the matrix, this is the longest distance from side to side of the object/matrix
+            for tile in pieceTiles:
+                if abs(tile[0]-mostTopTile[0]) > MatrixSize:
+                    MatrixSize = abs(tile[0]-mostTopTile[0]) + 1
+                if abs(tile[1]-mostLeftTile[1]) > MatrixSize:
+                    MatrixSize = abs(tile[1]-mostLeftTile[1]) + 1
+            print(mostTopTile[0],mostLeftTile[1])
+            print(MatrixSize, "MatrixSize")
+            print(pieceTiles)
+
         for tile in tilesToRemove:
             self.moveTiles.remove(tile)
         for tile in tilesToAppend:
@@ -78,12 +107,17 @@ class MainGrid(GridLayout):
         self.gameGrid = []
         self.moveTiles = []
         self.staticTiles = []
+        self.score = 0
         self.lastMove = ""
         for i in range(gridHeight):
             self.gameGrid.append([])
             for j in range(gridWidth):
                 self.gameGrid[i].append(0)
         self.changeSize()
+        # just for testing of the line check thing
+        for i in range(gridWidth):
+            self.gameGrid[0][i] = 1
+            self.gameGrid[1][i] = 1
         self.spawnObject()
         self.clockEvent = Clock.schedule_interval(self.update, 1)
     def changeSize(self):
@@ -131,7 +165,7 @@ class MainGrid(GridLayout):
                     if i <= 0 or [i-1, j] in self.staticTiles:
                         for tile in self.moveTiles:
                             self.staticTiles.append(tile)
-                            print(self.staticTiles)
+                            #print(self.staticTiles)
                         self.moveTiles = []
         for i in range(gridHeight):
             for j in range(gridWidth):
@@ -142,13 +176,15 @@ class MainGrid(GridLayout):
                         self.moveTiles.remove([i, j])
                         self.moveTiles.append([i-1, j])
     def checkLines(self):
+        linesCleared = 0
         for i in range(gridHeight):
             if 0 not in self.gameGrid[i]:
                 self.gameGrid.pop(i)
+                print("cleared line at", i)
                 self.gameGrid.insert(0, [0 for i in range(gridWidth)])
-                print("line removed")
-    def settings(self):
-        print("settings")
+                linesCleared += 1
+        self.score += linesCleared * 100 # this may not be the actual way to calculate the score, however I dont think it matters anyway
+        self.ids.scoreLabel.text = "Score: " + str(self.score)
 
 # the app class
 class TetrisApp(App):
