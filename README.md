@@ -24,6 +24,7 @@
 <p>To download the package, simply copy the command from the linked Pypi repo (should be something like pip install XYZ).</p>
 <p>Link also here: https://pypi.org/project/kivy-tetris-package/ </p>
 <p>The copy button is at the top of the page, see image bellow.</p>
+
 ![image](https://github.com/user-attachments/assets/3b852bc1-4947-452c-a381-15e4beb35aa9)
 
 <p>After the instalation is done, you can run the package by typing this command: kivy_tetris_package</p>
