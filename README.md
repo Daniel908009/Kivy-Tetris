@@ -1,6 +1,7 @@
 ## What is it?
 <p>This project is a Tetris app made in Kivy(multiplatform, naturaly resizable framework for Python)</p>
 <p>This is the first time I am working with the Kivy canvas, so it most likely isnt very optimal, but everything works.</p>
+<p>For people from HIGH SEAS, the demo link is described lower in the Readme file.</p>
 
 ## Features and goals
 - [X] Functional game logic
