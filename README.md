@@ -7,13 +7,14 @@
 - [X] Resizable tiles that always keep a square shape.
 - [X] Basic UI layout
 - [X] Basic scoring and colision detection
-- [] Piece designer (this is why the rotating was done dynamicaly)
-- [] Saving piece designs to a .json file
-- [] Switch the drawing to a separate thread from the game logic (this will improve the player experience when resizing the game)
-- [] Full settings window
-- [] Working display that shows what pieces will be next (this is the white empty rectangle that is currently in the app)
-- [] Make a mobile phone version (Kivy should make this possible, however I didnt try it out yet)  
-- [] Better UI
+- [ ] Make the start button work (currently the game automaticaly starts when opened)
+- [ ] Piece designer (this is why the rotating was done dynamicaly)
+- [ ] Saving piece designs to a .json file
+- [ ] Switch the drawing to a separate thread from the game logic (this will improve the player experience when resizing the game)
+- [ ] Full settings window
+- [ ] Working display that shows what pieces will be next (this is the white empty rectangle that is currently in the app)
+- [ ] Make a mobile phone version (Kivy should make this possible, however I didnt try it out yet)  
+- [ ] Better UI
 
 ## PYPI/HIGH SEAS DEMO LINK (READ THIS IF YOU WANT TO CHECK IT OUT)
 <p>The feedback AI at HighSeas told me that a lot of people got confused about what the demo link was, so I wrote this explanation, in case someone doesnt know.</p>
