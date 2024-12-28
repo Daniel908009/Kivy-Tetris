@@ -1,5 +1,6 @@
 ## What is it?
 <p>This project is a Tetris app made in Kivy(multiplatform, naturaly resizable framework for Python)</p>
+<p>This is the first time I am working with the Kivy canvas, so it most likely isnt very optimal, but everything works.</p>
 
 ## Features and goals
 - [X] Functional game logic
@@ -8,6 +9,7 @@
 - [X] Basic UI layout
 - [X] Basic scoring and colision detection
 - [ ] Make the start button work (currently the game automaticaly starts when opened)
+- [ ] Make the rotating work in both directions (currently pieces only rotate clockwise)
 - [ ] Piece designer (this is why the rotating was done dynamicaly)
 - [ ] Saving piece designs to a .json file
 - [ ] Switch the drawing to a separate thread from the game logic (this will improve the player experience when resizing the game)
@@ -31,8 +33,14 @@
 <p>After the instalation is done, you can run the package by typing this command: kivy_tetris_package</p>
 <p>In case this explanation isnt clear to you, please write it to the HighSeas feedback AI (the why did you vote for x input bar) or write it to me directly through the 'contact on Slack link'. Any feedback is appreciated!</p>
 
+## Controls
+a,d for left and right <br>
+s for going one more tile down on the next tick <br>
+w for rotating piece clockwise <br>
+
 ## Screenshots
 ![image](https://github.com/user-attachments/assets/ab102417-aef8-4689-a3cd-fdc27b72dedb)
+![image](https://github.com/user-attachments/assets/b01ad9d1-d3e7-4ec4-a5cd-8c9bf6830fa3)
 
 <h1>Download instructions</h1>
 *Note the links are instructional images <br>
