@@ -17,12 +17,12 @@
 
 ## PYPI/HIGH SEAS DEMO LINK (READ THIS IF YOU WANT TO CHECK IT OUT)
 <p>The feedback AI at HighSeas told me that a lot of people got confused about what the demo link was, so I wrote this explanation, in case someone doesnt know.</p>
-<p>First of all you will need pip to download this project from Pypi, if you do not have it and you still want to try this project, follow this guide: ![link](https://www.geeksforgeeks.org/how-to-install-pip-on-windows/)</p>
+<p>First of all you will need pip to download this project from Pypi, if you do not have it and you still want to try this project, follow this guide: [link](https://www.geeksforgeeks.org/how-to-install-pip-on-windows/)</p>
 <p>Pypi is sort of like Github, but instead of uploading code, you upload a package.</p>
 <p>Package contains everything needed to run a project (code, dependencies, etc.).</p>
 <p>You can run the code inside the package by simply running an entry command, this command is different for every project.</p>
 <p>To download the package, simply copy the command from the linked Pypi repo (should be something like pip install XYZ).</p>
-<p>Link also here: ![link](https://pypi.org/project/kivy-tetris-package/) </p>
+<p>Link also here: [link](https://pypi.org/project/kivy-tetris-package/) </p>
 <p>The copy button is at the top of the page, see image bellow.</p>
 ![image](https://github.com/user-attachments/assets/08e5b745-4357-42a7-b49d-6ff7a36958d9)
 <p>After the instalation is done, you can run the package by typing this command: kivy_tetris_package</p>
